@@ -38,11 +38,16 @@ public class SpringConfig {
 
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setPackagesToScan("com.oukele.the_data_jpa.entity");
+        bean.setPackagesToScan("com.oukele.the_data_jpa.entity");//扫描实体类
         bean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");//加载hibernate自动更新数据库结构
+        //格式化输出语法
+        properties.setProperty("hibernate.format_sql","true")
+        //显示格式化的语法
+        properties.setProperty("hibernate.format_sql","true")
+        //数据库设置哪一种数据库
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         bean.setJpaProperties(properties);
 
